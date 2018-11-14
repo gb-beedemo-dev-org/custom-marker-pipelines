@@ -29,11 +29,10 @@ pipeline {
                   env.npmPackages = props['npmPackages']
                 }
                 container('nodejs') {
-                  sh '''
-                    npm install express
-                    npm install pug --save
+                  sh """
+                    npm i -S ${npmPackages}
                     node ./hello.js &
-                  '''
+                  """
                 }
               }   
             }
